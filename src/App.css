@@ -1,0 +1,26 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+
+.circle {
+
+    border-top: dotted 10px rgb(130, 133, 134);
+    border-right: dotted 10px rgb(97, 139, 156);
+    border-bottom: dotted 10px rgb(63, 150, 190);
+    border-left: dotted 10px rgb(0, 183, 255);
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    animation: spin 1.2s linear infinite;
+
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
