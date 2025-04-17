@@ -1,7 +1,8 @@
 import React from 'react';
 import { CiBellOn } from "react-icons/ci";
 
-const Navbar = () => {
+const Navbar = ({favoriteItemsToggle}) => {
+    // console.log(favoriteItemsToggle)
     return (
         <div className='bg-white'>
             <div className="container mx-auto navbar bg-white text-black shadow-sm">
@@ -37,6 +38,8 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end flex gap-3">
+                    <button className='bg-red-500'
+                    onClick={()=> favoriteItemsToggle()}>cart</button>
                     <button className='bg-[#EBF0F5] rounded-full p-2'><CiBellOn size={24} /></button>
                     <div className="avatar">
                         <div className="w-9 rounded-full">

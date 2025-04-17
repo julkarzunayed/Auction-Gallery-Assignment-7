@@ -14,6 +14,7 @@ function App() {
   const itemsPromise = fetch("./auctions.json").then(res => res.json())
   const [items, setItem] = useState([])
   const [favoriteItemId, setFavoriteItemId] = useState([])
+  const [cart, setCart] = useState(false)
 
   const handleHeartBtnClick = (item) => {
     setItem([...items, item])
@@ -21,6 +22,10 @@ function App() {
 
     setFavoriteItemId([...favoriteItemId, item.id])
 
+  }
+
+  const favoriteItemsToggle = () => {
+    setCart(!cart)
   }
 
   // let favoriteItemId = 0
@@ -54,17 +59,17 @@ function App() {
       position: "top-right"
     });
   };
-  
+
 
   return (
     <>
-      <Navbar></Navbar>
+      <Navbar className="sticky" favoriteItemsToggle={favoriteItemsToggle}></Navbar>
       <Banner></Banner>
       <div id='active-auctions' className="bg-[#EBF0F5] text-[#0E2954] py-32">
         <div className="container mx-auto">
           <h2 className='text-4xl font-medium'>Active Auctions</h2>
           <p className='text-xl my-8'>Discover and bid on extraordinary items</p>
-          <div  className="grid grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
             <div className="col-span-2">
               <Suspense fallback={
                 <div className='flex items-center justify-center'>
@@ -80,11 +85,18 @@ function App() {
 
               </Suspense>
             </div>
-            <div className="">
-              <FavoriteItems
-                handleFavoriteItemsBtn={handleFavoriteItemsBtn}
-                items={items}>
-              </ FavoriteItems>
+            <div className={`
+              ${cart ? "favorite-items-container" : ""}
+              hidden lg:block 
+            `}>
+              <div className="favorite-items">
+                <FavoriteItems
+                  cart={cart}
+                  favoriteItemsToggle={favoriteItemsToggle}
+                  handleFavoriteItemsBtn={handleFavoriteItemsBtn}
+                  items={items}>
+                </ FavoriteItems>
+              </div>
             </div>
           </div>
         </div>
@@ -94,6 +106,7 @@ function App() {
       <div className="">
         <ToastContainer></ToastContainer>
       </div>
+
 
     </>
   )

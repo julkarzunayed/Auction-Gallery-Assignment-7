@@ -12,7 +12,34 @@
     width: 80px;
     border-radius: 50%;
     animation: spin 1.2s linear infinite;
+    /* position: ; */
 
+}
+
+.favorite-items-container{
+    background: rgba(128, 128, 128, 0.705);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    position:fixed;
+    top:0;
+    left: 0;
+    /* right: -10%; */
+    border: solid tomato 1px;
+    overflow: hidden;
+
+}
+.favorite-items{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 90%;
+    overflow-y: auto;
+    /* scrollbar-width:none; */
+    scrollbar-color: white;
+    
 }
 
 @keyframes spin {
